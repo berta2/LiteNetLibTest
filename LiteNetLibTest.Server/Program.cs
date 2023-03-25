@@ -17,6 +17,9 @@ NetManager server = new NetManager(listener);
 
 listener.ConnectionRequestEvent += Listener_ConnectionRequestEvent;
 listener.NetworkReceiveEvent += Listener_NetworkReceiveEvent;
+listener.PeerConnectedEvent += Listener_PeerConnectedEvent;
+
+
 
 server.Start(9050);
 
@@ -48,6 +51,11 @@ void OnLoginRequestPacketReceived(LoginRequestPacket packet, NetPeer peer)
 void Listener_NetworkReceiveEvent(NetPeer peer, NetPacketReader reader, DeliveryMethod deliveryMethod)
 {
     _netPacketProcessor.ReadAllPackets(reader, peer);
+}
+
+void Listener_PeerConnectedEvent(NetPeer peer)
+{
+    Console.WriteLine(peer.EndPoint + " connected!");
 }
 
 void Listener_ConnectionRequestEvent(ConnectionRequest request)

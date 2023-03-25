@@ -24,7 +24,7 @@ listener.NetworkReceiveEvent += Listener_NetworkReceiveEvent;
 
 client = new NetManager(listener);
 
-Thread.Sleep(1000);
+//Thread.Sleep(1000);
 client.Start();
 
 client.Connect("localhost", 9050, "SomeConnectionKey");
